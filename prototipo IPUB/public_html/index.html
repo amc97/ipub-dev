@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>IPUB</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/index.css"/>
+        <link rel="icon" href="img/IPUB_icone.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="img/IPUB_icone.ico" type="image/x-icon" />
+    </head>
+    <body>
+        
+        <!-- Cabeçalho contendo login e cadastro -->
+        <div id="header">
+            <div class="h"><a href="#openLogin">Login</a></div>
+            <div class="h"><a href="cadastro.html">Cadastro</a></div>
+        </div>
+        
+        <!-- Caixa de login -->
+        <div id="openLogin" class="modalDialog">
+	        <div>
+	        	<a href="#close" title="Fechar" class="close">X</a>
+	        	<form>
+	        		<h3>Login</h3>
+	        		<input type="text" name="email" placeholder="Email">
+	        		<input type="password" name="Senha" placeholder="Senha">
+	        		<button>Entrar</button>
+                                <a href="cadastro.html"><h4>ou<br>Crie uma conta!</h4></a>
+	        	</form>
+	        </div>
+        </div>
+        
+        <!-- Título -->
+        <div id="titulo">
+           <h1>IPUB</h1>
+        </div>
+        
+        <!-- Links para as outras páginas do site -->
+        <div id="botoes">
+            <div class="b"><a href="/">Home</a></div>
+            <div class="b"><a href="restaurantes.html" style="text-align: center">Restaurantes</a></div>
+            <div class="b"><a href="contato.html">Contato</a></div>
+            <div class="b"><a href="sobre.html">Sobre</a></div>
+            
+        </div>
+        
+        <!-- Conteúdo -->
+        <div class="slideshow-container">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="img/logo.png" style="width:100%">
+                <div class="text"></div>
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="img/Plataformas.jpg" style="width:100%">
+                <div class="text"></div>
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="img/Untitled-2.png" style="width:100%">
+                <div class="text"></div>
+              </div>
+
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+
+        <script type="text/javascript">
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              if (n > slides.length) {slideIndex = 1} 
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+                  slides[i].style.display = "none"; 
+              }
+              for (i = 0; i < dots.length; i++) {
+                  dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block"; 
+              dots[slideIndex-1].className += " active";
+            }
+        </script>
+
+        <div id="contents">
+            
+            <!--
+                <div class="aviso">
+                        <img src="img/Plataformas.png">
+                </div>
+            -->
+        </div>
+        
+    </body>
+</html>

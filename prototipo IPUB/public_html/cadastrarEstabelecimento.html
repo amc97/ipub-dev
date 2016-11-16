@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>IPUB - Cadastro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/cadastrarEstabelecimento.css"/>
+
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="mapa.js"></script>
+        <script type="text/javascript" src="jquery-ui.custom.min.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Vg33D-LxgmpLB2UFGvce8Vp0SSsekoY&callback=initMap">
+        </script>
+    </head>
+    <body>
+        <div id="cabeçalho">
+            <div id="c"><a href="index.html">Home</a></div>
+            <div id="c"><a href="">Contato</a></div>
+            <div id="c"><a href="">Sobre</a></div>
+        </div>
+        <div id="corpo"> 
+            <div id="esquerda">
+                <form class="form-horizontal">
+                    <input class="" id="usuario" type="text" name="usuario" placeholder="Nome" >
+                    <input id="sobrenome" type="text" name="sobrenome" placeholder="Sobrenome">
+                    <input id="email" type="text" name="email" placeholder="Email">
+                    <input id="cEmail" type="text" name="cEmail" placeholder="Confirme email">
+                    <input id="telefone" type="text" name="telefone" placeholder="telefone">  
+                    <input id="cpf" type="text" name="cpf" placeholder="cpf">  
+                    <input id="senha" type="password" name="senha" placeholder="Senha">  
+                    <input id="sCenha" type="password" name="cSenha" placeholder="Confirme a senha">            
+                    <button id="botão" type="submit" value="cadastro"> Enviar </button> 
+                </form>
+            </div>
+
+
+            <form method="post" action="cadastrarEstabelecimento.html">    
+                <fieldset>
+
+                    <legend>Informe o endereço do seu estabelecimento aqui</legend>    
+
+                    <div class="campos">
+                        <label for="txtEndereco">Endereço:</label>
+                        <input type="text" id="txtEndereco" name="txtEndereco" />
+                        <input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
+                    </div>
+
+                    <div id="map">
+                        <script type="text/javascript">
+                            var map;
+                            var geocoder;
+                            var marker;
+                            var latlng = new google.maps.LatLng(-7.306812, -38.944733);
+
+                            function initMap() {
+                                map = new google.maps.Map(document.getElementById('map'), {
+                                    center: {lat: -7.306812, lng: -38.944733},
+                                    zoom: 15
+                                });
+                            }
+
+                            geocoder = new google.maps.Geocoder();
+
+                            marker = new google.maps.Marker({
+                                map: map,
+                                draggable: true
+                            });
+
+                            marker.setPosition(latlng);
+
+                            $(document).ready(function () {
+
+                                initMap();
+
+                                function carregarNoMapa(endereco) {
+                                    geocoder.geocode({'address': endereco + ', Brasil', 'region': 'BR'}, function (results, status) {
+                                        if (status === google.maps.GeocoderStatus.OK) {
+                                            if (results[0]) {
+                                                var latitude = results[0].geometry.location.lat();
+                                                var longitude = results[0].geometry.location.lng();
+
+                                                $('#txtEndereco').val(results[0].formatted_address);
+                                                $('#txtLatitude').val(latitude);
+                                                $('#txtLongitude').val(longitude);
+
+                                                var location = new google.maps.LatLng(latitude, longitude);
+                                                marker.setPosition(location);
+                                                map.setCenter(location);
+                                                map.setZoom(16);
+                                            }
+                                        }
+                                    });
+                                }
+
+                                $("#btnEndereco").click(function () {
+                                    if ($(this).val() !== "")
+                                        carregarNoMapa($("#txtEndereco").val());
+                                });
+
+                                $("#txtEndereco").blur(function () {
+                                    if ($(this).val() !== "")
+                                        carregarNoMapa($(this).val());
+                                });
+
+                                google.maps.event.addListener(marker, 'drag', function () {
+                                    geocoder.geocode({'latLng': marker.getPosition()}, function (results, status) {
+                                        if (status === google.maps.GeocoderStatus.OK) {
+                                            if (results[0]) {
+                                                $('#txtEndereco').val(results[0].formatted_address);
+                                                $('#txtLatitude').val(marker.getPosition().lat());
+                                                $('#txtLongitude').val(marker.getPosition().lng());
+                                            }
+                                        }
+                                    });
+                                });
+
+                                $("#txtEndereco").autocomplete({
+                                    source: function (request, response) {
+                                        geocoder.geocode({'address': request.term + ', Brasil', 'region': 'BR'}, function (results, status) {
+                                            response($.map(results, function (item) {
+                                                return {
+                                                    label: item.formatted_address,
+                                                    value: item.formatted_address,
+                                                    latitude: item.geometry.location.lat(),
+                                                    longitude: item.geometry.location.lng()
+                                                };
+                                            }));
+                                        });
+                                    },
+                                    select: function (event, ui) {
+                                        $("#txtLatitude").val(ui.item.latitude);
+                                        $("#txtLongitude").val(ui.item.longitude);
+                                        var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+                                        marker.setPosition(location);
+                                        map.setCenter(location);
+                                        map.setZoom(16);
+                                    }
+                                });
+
+                                $("form").submit(function (event) {
+                                    event.preventDefault();
+
+                                    var endereco = $("#txtEndereco").val();
+                                    var latitude = $("#txtLatitude").val();
+                                    var longitude = $("#txtLongitude").val();
+
+                                    alert("Endereço: " + endereco + "\nLatitude: " + latitude + "\nLongitude: " + longitude);
+                                });
+
+                            });
+                        </script>
+
+                    </div>
+
+                    <input type="submit" value="Enviar" name="btnEnviar" />
+
+                    <input type="hidden" id="txtLatitude" name="txtLatitude" />
+                    <input type="hidden" id="txtLongitude" name="txtLongitude" />
+
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,315 @@
+@font-face{
+    font-family: "Mesquite std";
+    src: url("fonts/MesquiteStd.otf");
+}
+
+@font-face{
+    font-family: "Akrobat";
+    src: url("fonts/Akrobat-Regular.otf");
+}
+
+/******* Configurações gerais *******/
+body{
+    background-color: black;
+}
+
+a{
+    color: yellow; 
+    text-decoration: none;
+}
+
+
+/******* Cabeçalho *******/
+#header{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 35px;
+    justify-content: center;
+}
+
+.h{
+    position: relative;
+    display: flex;
+    width: 100px;
+    font-size: 25px;
+    font-family: "Akrobat";
+    justify-content: center;
+}
+
+#header a{
+    width: 60px;
+}
+
+
+/******* Titulo IPUB ******/
+#titulo{
+    border-top: 4px double yellow;
+    border-bottom: 4px double yellow;
+    height: 120px;
+    position: relative;
+    display: flex;
+    width: 100%; 
+    justify-content:center;
+    font-family: "Mesquite std";
+    font-size: 60px; 
+}
+
+#titulo h1{
+    color: yellow;
+    margin: auto;
+}
+
+
+/****** Links da barra *******/
+#botoes{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 35px;
+    padding: 10px 0px;
+    justify-content:center;
+    font-family: "Akrobat";
+    font-size: 25px;
+    border-bottom: 4px double yellow;
+}
+
+#botoes a{
+    width: 100px;
+    text-decoration: none;
+}
+
+.b{
+    width: 200px;
+    height: 35px;
+    border-right: 1px solid yellow;
+    border-left: 1px solid yellow;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.b a{
+    color: yellow;
+    width: 150px;
+    position: relative;
+    display: flex;
+    justify-content:center;
+}
+
+.b1 a{
+    color: yellow;
+    width: 150px;
+    border-right: 1px solid yellow;
+    border-left: 1px solid yellow;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+/****** Conteúdo do corpo ******/
+#contents{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.aviso{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.aviso img{
+    width: 900px;
+    height: 358px;
+}
+
+
+
+/******* Configurações da caixa de login ******/
+.modalDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 5px;
+    background: white;
+    border-style: double;
+    /*background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);*/
+    justify-content: center;
+}
+
+.modalDialog h3{
+    font-family: "Akrobat";
+    font-size: 25px;
+    text-align: center;
+}
+
+.modalDialog a{
+    font-family: "Akrobat";
+    font-size: 15px;
+    text-align: center;
+    color: blue;
+}
+.modalDialog input{
+    font-family: "Akrobat";
+    font-size: 16px;
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    width: 250px;
+    height: 30px;
+    justify-content: center;
+    margin: 10% auto;
+}
+
+.modalDialog button{
+    font-family: "Akrobat";
+    font-size: 18px;
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    justify-content: center;
+    margin: 10% auto;
+}
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  margin-top: 30px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}

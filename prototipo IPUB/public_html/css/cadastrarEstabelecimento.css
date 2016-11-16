@@ -1,0 +1,97 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01/11/2016, 12:49:07
+    Author     : Anderson Malheiro
+*/
+
+body{
+    background-color: black;
+}
+
+#cabeçalho{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 35px;
+    justify-content: center;
+    color: yellow;
+    font-family: "Nyala";
+    font-size: 25px;
+    border-bottom: 4px double yellow;
+}
+
+#c{
+    width: 120px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#cabeçalho a{
+    width: 60px;
+}
+
+a{
+    color: yellow; 
+    text-decoration: none;
+}
+
+#corpo{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#esquerda{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+form{
+    font-size: 20px;
+    margin-top: -2px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+form input, button{
+    margin-top: 5%;
+}
+
+form legend{
+    width: 100%;
+    font-size: 30px;
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
+}
+form #usuario, #sobrenome, #email, #cEmail, #telefone, #cpf, #senha, #sCenha{
+    width: 50%;
+    height: 20px;
+}
+
+form #botão{
+    width: 50%;
+    height: 40px;
+}
+
+
+
+#map{
+    position: relative;
+    display: flex;
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    margin-top: 10px;
+}
